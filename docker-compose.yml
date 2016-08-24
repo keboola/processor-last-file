@@ -1,0 +1,13 @@
+version: '2'
+services:
+  processor-last-file:
+    build: .
+    image: keboola/processor-last-file
+    tty: true
+    stdin_open: true
+    command: /bin/sh
+    volumes:
+      - ./:/code
+  processor-last-file-tests:
+    image: keboola/processor-last-file
+    command: bash -c "composer install && php vendor/bin/phpunit"
