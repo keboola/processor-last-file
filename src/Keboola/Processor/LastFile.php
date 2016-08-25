@@ -32,7 +32,7 @@ class LastFile
         $this->setPath($path);
     }
 
-    public function filterTag($tag)
+    public function filterTag($tag, $outFolder)
     {
         $finder = new Finder();
         $finder->name("*.manifest");
@@ -69,10 +69,8 @@ class LastFile
             if ($file->getFilename() == $latestKey ||
                 $file->getFilename() == substr($latestKey, 0, strlen($latestKey) - 9)
             ) {
-                continue;
-            } else {
-                $fs->remove($file->getPathname());
-            }
+                $fs->copy($file->getPathname(), $outFolder . "/" . $file->getBasename());
+            } 
         }
     }
 }

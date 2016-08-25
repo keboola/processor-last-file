@@ -15,6 +15,7 @@ class LastFileTest extends TestCase
     {
         $fs = new Filesystem();
         $fs->mkdir($tmp->getTmpFolder() . "/data/in/files");
+        $fs->mkdir($tmp->getTmpFolder() . "/data/out/files");
         $fs->copy(__DIR__ . "/data/in/files/1", $tmp->getTmpFolder() . "/data/in/files/1");
         $fs->copy(__DIR__ . "/data/in/files/1.manifest", $tmp->getTmpFolder() . "/data/in/files/1.manifest");
         $fs->copy(__DIR__ . "/data/in/files/2", $tmp->getTmpFolder() . "/data/in/files/2");
@@ -38,12 +39,12 @@ class LastFileTest extends TestCase
         $this->prepareTmpDir($tmp);
         $tmpDir = $tmp->getTmpFolder();
         $lastFile = new LastFile($tmpDir . "/data/in/files/");
-        $lastFile->filterTag("tag1");
+        $lastFile->filterTag("tag1", $tmpDir . "/data/out/files/");
         $finder = new Finder();
-        $files = (array) $finder->files()->in($tmpDir . "/data/in/files/")->sortByName()->getIterator();
+        $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/2", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/2.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/2", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/2.manifest", $files);
     }
 
     public function testLastFileTag2()
@@ -52,12 +53,12 @@ class LastFileTest extends TestCase
         $this->prepareTmpDir($tmp);
         $tmpDir = $tmp->getTmpFolder();
         $lastFile = new LastFile($tmpDir . "/data/in/files/");
-        $lastFile->filterTag("tag2");
+        $lastFile->filterTag("tag2", $tmpDir . "/data/out/files/");
         $finder = new Finder();
-        $files = (array) $finder->files()->in($tmpDir . "/data/in/files/")->sortByName()->getIterator();
+        $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/1", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/1.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/1", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/1.manifest", $files);
     }
 
     public function testLastFileTag3()
@@ -66,12 +67,12 @@ class LastFileTest extends TestCase
         $this->prepareTmpDir($tmp);
         $tmpDir = $tmp->getTmpFolder();
         $lastFile = new LastFile($tmpDir . "/data/in/files/");
-        $lastFile->filterTag("tag3");
+        $lastFile->filterTag("tag3", $tmpDir . "/data/out/files/");
         $finder = new Finder();
-        $files = (array) $finder->files()->in($tmpDir . "/data/in/files/")->sortByName()->getIterator();
+        $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/3", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/3.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/3", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/3.manifest", $files);
     }
 
     public function testLastFileTag4()
@@ -80,12 +81,12 @@ class LastFileTest extends TestCase
         $this->prepareTmpDir($tmp);
         $tmpDir = $tmp->getTmpFolder();
         $lastFile = new LastFile($tmpDir . "/data/in/files/");
-        $lastFile->filterTag("tag4");
+        $lastFile->filterTag("tag4", $tmpDir . "/data/out/files/");
         $finder = new Finder();
-        $files = (array) $finder->files()->in($tmpDir . "/data/in/files/")->sortByName()->getIterator();
+        $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/5", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/in/files/5.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/5", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/5.manifest", $files);
     }
 
     /**
@@ -98,6 +99,6 @@ class LastFileTest extends TestCase
         $this->prepareTmpDir($tmp);
         $tmpDir = $tmp->getTmpFolder();
         $lastFile = new LastFile($tmpDir . "/data/in/files/");
-        $lastFile->filterTag("tag5");
+        $lastFile->filterTag("tag5", $tmpDir . "/data/out/files/");
     }
 }
