@@ -38,3 +38,10 @@ after_error:
 
 after_failure:
   - docker-compose logs
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ./deploy.sh
+  on:
+    tags: true
