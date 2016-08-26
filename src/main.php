@@ -15,8 +15,8 @@ if (!file_exists($arguments["data"] . "/config.json")) {
 
 $config = json_decode(file_get_contents($arguments["data"] . "/config.json"), true);
 
-if (isset($config["parameter"]["tag"])) {
-    $tag  = $config["parameter"]["tag"];
+if (isset($config["parameters"]["tag"])) {
+    $tag = $config["parameters"]["tag"];
 } else {
     print "Tag not defined.";
     exit(1);
