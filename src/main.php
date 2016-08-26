@@ -25,7 +25,7 @@ if (isset($config["parameter"]["tag"])) {
 try {
     $datadir = $arguments["data"] . "/in/files";
     $processor = new \Keboola\Processor\LastFile($datadir);
-    $result = $processor->filterTag($tag);
+    $result = $processor->filterTag($tag, $arguments["data"] . "/out/files");
 } catch (\Keboola\Processor\Exception $e) {
     print $e->getMessage();
     exit(1);

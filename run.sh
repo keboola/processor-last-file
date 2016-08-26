@@ -1,4 +1,4 @@
 #!/bin/sh
 
-php ./src/main.php --data=$KBC_DATADIR/in/files/
+php ./src/main.php --data=$KBC_DATADIR
 
