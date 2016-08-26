@@ -62,21 +62,16 @@ class LastFile
             }
         }
 
-        print "latest key " . $latestKey . "\n";
-        print "latest manifest " . print_r($latestManifest, true) . "\n";
-
         $fs = new Filesystem();
         $finder = new Finder();
 
         foreach ($finder->in($this->getPath()) as $file) {
             // copy manifest
             if ($file->getFilename() == $latestKey) {
-                print "copy {$file->getPathname()} to " . $outFolder . "/" . $tag . ".manifest\n";
                 $fs->copy($file->getPathname(), $outFolder . "/" . $tag . ".manifest");
             }
             // copy file
             if ($file->getFilename() == substr($latestKey, 0, strlen($latestKey) - 9)) {
-                print "copy {$file->getPathname()} to " . $outFolder . "/" . $tag . "\n";
                 $fs->copy($file->getPathname(), $outFolder . "/" . $tag);
             }
 
