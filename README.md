@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/keboola/processor-last-file.svg?branch=master)](https://travis-ci.org/keboola/processor-last-file)
 [![Docker Repository on Quay](https://quay.io/repository/keboola/processor-last-file/status "Docker Repository on Quay")](https://quay.io/repository/keboola/processor-last-file)
 
-Last File processor. Selects last file from `/data/files/in` with a given tag and deletes all other files. Manifest file is kept.
+Last File processor. Selects last file from `/data/files/in` with a given tag and deletes all other files. The remaining file is renamed as the tag and the manifest is kept and renamed accordingly (`tag.manifest`).
  
 ## Development
  

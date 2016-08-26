@@ -66,11 +66,15 @@ class LastFile
         $finder = new Finder();
 
         foreach ($finder->in($this->getPath()) as $file) {
-            if ($file->getFilename() == $latestKey ||
-                $file->getFilename() == substr($latestKey, 0, strlen($latestKey) - 9)
-            ) {
-                $fs->copy($file->getPathname(), $outFolder . "/" . $file->getBasename());
-            } 
+            // copy manifest
+            if ($file->getFilename() == $latestKey) {
+                $fs->copy($file->getPathname(), $outFolder . "/" . $tag . ".manifest");
+            }
+            // copy file
+            if ($file->getFilename() == substr($latestKey, 0, strlen($latestKey) - 9)) {
+                $fs->copy($file->getPathname(), $outFolder . "/" . $tag);
+            }
+
         }
     }
 }

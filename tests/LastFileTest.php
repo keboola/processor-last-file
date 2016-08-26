@@ -28,11 +28,6 @@ class LastFileTest extends TestCase
         $fs->copy(__DIR__ . "/data/in/files/5.manifest", $tmp->getTmpFolder() . "/data/in/files/5.manifest");
     }
 
-    public function testDummy()
-    {
-        $this->assertTrue(true);
-    }
-
     public function testLastFileTag1()
     {
         $tmp = new Temp();
@@ -43,8 +38,9 @@ class LastFileTest extends TestCase
         $finder = new Finder();
         $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/2", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/2.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag1", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag1.manifest", $files);
+        $this->assertFileEquals(__DIR__ . "/data/in/files/2.manifest", $tmpDir . "/data/out/files/tag1.manifest");
     }
 
     public function testLastFileTag2()
@@ -57,8 +53,9 @@ class LastFileTest extends TestCase
         $finder = new Finder();
         $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/1", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/1.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag2", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag2.manifest", $files);
+        $this->assertFileEquals(__DIR__ . "/data/in/files/1.manifest", $tmpDir . "/data/out/files/tag2.manifest");
     }
 
     public function testLastFileTag3()
@@ -71,8 +68,9 @@ class LastFileTest extends TestCase
         $finder = new Finder();
         $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/3", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/3.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag3", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag3.manifest", $files);
+        $this->assertFileEquals(__DIR__ . "/data/in/files/3.manifest", $tmpDir . "/data/out/files/tag3.manifest");
     }
 
     public function testLastFileTag4()
@@ -85,8 +83,9 @@ class LastFileTest extends TestCase
         $finder = new Finder();
         $files = (array) $finder->files()->in($tmpDir . "/data/out/files/")->sortByName()->getIterator();
         $this->assertEquals(2, count($files));
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/5", $files);
-        $this->assertArrayHasKey($tmpDir . "/data/out/files/5.manifest", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag4", $files);
+        $this->assertArrayHasKey($tmpDir . "/data/out/files/tag4.manifest", $files);
+        $this->assertFileEquals(__DIR__ . "/data/in/files/5.manifest", $tmpDir . "/data/out/files/tag4.manifest");
     }
 
     /**
