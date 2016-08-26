@@ -15,4 +15,4 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 RUN composer install --no-interaction
 
-#ENTRYPOINT php /code/src/main.php --data=/data
+ENTRYPOINT php /code/src/main.php --data=/data
