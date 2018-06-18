@@ -31,5 +31,4 @@ try {
     exit(1);
 }
 
-print "Processed {$rows} rows.";
 exit(0);
