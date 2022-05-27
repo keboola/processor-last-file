@@ -30,7 +30,7 @@ Clone this repository and init the workspace with following commands:
 ```
 {  
     "definition": {
-        "component": "keboola.processor.last-file"
+        "component": "keboola.processor-last-file"
     },
     "parameters": {
         "tag": "myTag" 
