@@ -43,3 +43,7 @@ Clone this repository and init the workspace with following commands:
 ### tag
 
 Download files with the given tag. 
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
